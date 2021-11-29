@@ -4,7 +4,10 @@ import store from '../store/index'
 export default {
     verifyToken: function (token) {
         return request({
-            url: '/user?access_token=' + token
+            headers: {
+                "Authorization": "token " + token
+            },
+            url: '/user'
         })
     },
     getInfo: function () {

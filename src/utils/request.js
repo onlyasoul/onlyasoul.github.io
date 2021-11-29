@@ -12,11 +12,7 @@ service.interceptors.request.use(
     config => {
         let token = store.state.token.token
         if (token) {
-            let sp = "?"
-            if (config.url.indexOf("?") >= 0) {
-                sp = "&"
-            }
-            config.url = config.url + sp + "access_token=" + token
+            config.headers = {"Authorization": "token " + token}
         }
         return config
     },
